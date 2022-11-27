@@ -1,8 +1,9 @@
-* {
+body {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
-ul li{
+.sub-menu-sidebar ul li{
     list-style-type: none;
     padding: 20px;
 }
@@ -15,4 +16,18 @@ h6 {
 }
 img{
     padding: 10px;
+}
+.sub-menu-sidebar li:hover {
+    background: #1F36AB;
+    cursor: pointer;
+    color: white;
+}
+.logo{
+    margin: auto;
+    width: 50%;
+}
+.navs ul li {
+    list-style-type: none;
+    display: inline;
+    padding: 5px;
 }
