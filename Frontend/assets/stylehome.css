@@ -1,0 +1,18 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+ul li{
+    list-style-type: none;
+    padding: 20px;
+}
+.main-body{
+    background: linear-gradient(180deg, rgba(244, 249, 255, 0.0001) 0%, #F4F9FF 26.23%);
+    ;
+}
+h6 {
+    white-space: nowrap;
+}
+img{
+    padding: 10px;
+}
