@@ -1,0 +1,21 @@
+.form-control {
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid #000000;
+
+}
+body {
+    width: 100%;
+    min-height: 100vh;
+    background-image: linear-gradient(170deg, #B621fe, #1fd1f9);
+    display: -webkit-box;
+    display: -webkit-flex;
+    font-family: 'Outfit', sans-serif;
+}
+a {
+    color: yellow;
+}
+.btn {
+    background-image: linear-gradient(170deg, #B621fe, #1fd1f9);
+    border-radius: 10px;
+}
