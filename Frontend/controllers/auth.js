@@ -6,7 +6,6 @@ const logout = require("./logout");
 const db = require("../routes/db-config");
 
 router.post("/signup", signup)
-// router.post("/login", login)
-// router.get("/logout", logout)
+router.post("/login", login)
 
 module.exports = router;
