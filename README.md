@@ -1,5 +1,5 @@
                                                      
- <p align="center" style= "ont-family: 'Courier New', Courier, monospace;
+ <p align="center" style="font-family: 'Courier New', Courier, monospace;
     font-size: larger; "> :drum: MePlay :guitar:</p>
 
 <p align="center">
