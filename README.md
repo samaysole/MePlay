@@ -46,8 +46,9 @@ Follow the next steps in the following order:
     </h5>
 3. Be sure there are not processes running in the port you specfied.
 4. Go to fron-end folder, install packages with `npm install` and run with `npm start`
-## User Logged In Page
+## Preview
 
+https://user-images.githubusercontent.com/85625481/206214789-e7c79854-3265-4ca8-8bd2-65c7cbc7bbf5.mp4
 
 ## Contributing :raised_hands:
 
