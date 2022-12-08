@@ -1,50 +1,57 @@
 const express = require("express");
-const path = require("path")
-const mysql = require("mysql");
-const jwt = require("jsonwebtoken");
 const db = require("./routes/db-config");
 const app = express();
 const PORT = process.env.PORT
 const bodyParser = require("body-parser");
-const cookieParser = require("cookie-parser");
+const cookie= require("cookie-parser");
 
 const encoder = bodyParser.urlencoded({ extended: false });
 app.use(express.static("/"));
-app.use(express.urlencoded({ extended: false }))
+
 app.use(express.json());
-app.use(cookieParser());
+app.use(cookie());
 app.use("/assets",express.static("assets"));
+app.use("/js", express.static(__dirname + "./assets/js"))
 app.use("/Images",express.static("Images"));
 app.set('view engine', 'html');
-app.set("views", "/");
-app.use(express.json())
+
 
 //connect to the database
 db.connect((err)=>{
     if (err) throw err;
-    console.log("The database is now connected");
+    console.log("Database is now connected");
 })
 
 
 app.get("/",function(req,res){
   res.sendFile(__dirname + "/Login.html");
 })
-
-// app.get("/",function(req,res){
-//    res.sendFile(__dirname + "/SignUP.html");
-// })
-
-//authenticating with the database for the login system
-app.post("/",encoder,function(req,res){
+// authentication database for signup page
+app.post("/signup",encoder,function(req,res){
+  var username = req.body.username;
+  var password = req.body.password;
+  var firstN = req.body.firstN;
+  var lastN = req.body.lastN;
+  db.query('INSERT INTO user_info SET ? ', {username:username , userPass:password, f_name: firstN, l_name:lastN},function(error,results,fields){
+  console.log(results)
+    if (error) {
+      console.log(error);
+     } else {
+      res.redirect("/Login");
+    }
+  });
+})
+// //authenticating with the database for the login system
+app.post("/login",encoder,function(req,res){
     var username = req.body.username;
     var password = req.body.password;
-    db.query("select * from user_info where username = ? and userPass = ?",[username,password],function(error,results,fields){
+   db.query("select * from user_info where username = ? and userPass = ?",[username,password],function(error,results,fields){
       console.log(results)  
       if (results.length == 0 || results.length < 0){
-        res.status(401).sendFile(__dirname + '/Login.html',{ 
-          message: 'Wrong password or email'
+        res.status(401).sendFile(__dirname + '/Login.html', {
+            message: 'Email or Password is incorrect'
         })
-        }
+      }
         if (results.length > 0){
             res.redirect("/Homepage");
         } else {
@@ -57,6 +64,8 @@ app.post("/",encoder,function(req,res){
 app.get("/Homepage",function(req,res){
   res.sendFile(__dirname + "/Homepage.html")
 })
+
+
 
 // Define Routes
 app.use('/', require('./routes/pages'));
